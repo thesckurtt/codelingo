@@ -1,6 +1,8 @@
-# 🦉 CodeLingo
+![Banner Readme](https://github.com/user-attachments/assets/9627bc8e-fdc2-4ccf-af88-961c45556a12)
+# 🦉 Codelingo
 
-**CodeLingo** é um projeto educacional criado como parte de um exercício prático do curso técnico do **Senac RS**. Inspirado no Duolingo, o aplicativo busca ensinar **inglês com foco em programação**, por meio de perguntas de múltipla escolha contextualizadas.
+
+**Codelingo** é um projeto educacional criado como parte de um exercício prático do curso técnico do **Senac RS**. Inspirado no Duolingo, o aplicativo busca ensinar **inglês com foco em programação**, por meio de perguntas de múltipla escolha contextualizadas.
 
 > ⚠️ Este projeto é exclusivo para fins educacionais e **não possui intenção comercial**.
 
@@ -42,6 +44,6 @@ Caso tenha interesse em contribuir com ideias ou feedback, sinta-se à vontade p
 
 ---
 
-**CodeLingo** — Aprenda inglês com código 💻📘  
+**Codelingo** — Aprenda inglês com código 💻📘  
 📚 Projeto de estudo — Senac RS  
 🚫 Sem fins comerciais
