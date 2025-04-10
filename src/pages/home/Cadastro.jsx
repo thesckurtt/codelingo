@@ -1,14 +1,26 @@
-import React from 'react'
-import Header from '../../components/Header'
-import MainCadastroLandingPage from '../../components/home/MainCadastroLandingPage'
+import React from "react";
+import Header from "../../components/Header";
+import MainCadastroLandingPage from "../../components/home/MainCadastroLandingPage";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+import { useEffect } from "react";
 
-const cadastro = () => {
+const Cadastro = () => {
+  const { isLoggedIn, login } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/App");
+    }
+  }, [isLoggedIn, navigate]);
+
   return (
     <>
       <Header />
-      <MainCadastroLandingPage />
+      <MainCadastroLandingPage login={login}/>
     </>
-  )
-}
+  );
+};
 
-export default cadastro
+export default Cadastro;
