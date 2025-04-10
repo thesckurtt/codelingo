@@ -9,6 +9,7 @@ const Cadastro = () => {
   const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
 
+  // Redireciona para o App se já tiver logado
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/App");
