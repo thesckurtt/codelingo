@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ButtonDuoSuccess = ({ id, tag, text, classes, link = null }) => {
+const ButtonDuoSuccess = ({ id, tag, text, classes, onClick = null, link = null }) => {
   const Tag = (!tag === 'reactLink' ? tag : Link);
   const isLinkA = tag === "a";
   const isLinkReact = tag === "reactLink";
@@ -10,6 +10,7 @@ const ButtonDuoSuccess = ({ id, tag, text, classes, link = null }) => {
       {...(id ? { id } : {})}
       {...(isLinkA ? { href: link || "#" } : {})}
       {...(isLinkReact ? { to: link || "#" } : {})}
+      {...(onClick) ? {onClick: onClick}: {}}
       className={classes}
     >
       {text}
