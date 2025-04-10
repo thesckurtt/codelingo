@@ -355,7 +355,9 @@ body {
 .container-choice-avatar-img:focus {
   background-color: var(--color-dark-blue);
 }
-
+.container-choice-avatar-img.active{
+  background-color: var(--color-gray-200);
+}
 /*  APP */
 .body-dashboard {
   min-height: 100vh;
