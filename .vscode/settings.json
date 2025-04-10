@@ -9,7 +9,7 @@
     "favicon-16x16.png": true,
     "eslint.config.js": true,
     "favicon-32x32.png": true,
-    ".gitignore": false,
+    ".gitignore": true,
     "favicon.ico": true,
     "package-lock.json": true,
     "package.json": true,
