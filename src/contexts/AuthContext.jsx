@@ -7,19 +7,19 @@ export const AuthProvider = ({ children }) => {
     localStorage.getItem("isLoggedIn") === "true"
   );
   const [user, setUser] = useState(null);
-
+  
   const login = (user) => {
-    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("isLoggedIn", "true");
     setIsLoggedIn(true);
-    setUser(user)
+    setUser(user);
   };
 
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
-    setUser(null)
+    setUser(null);
   };
 
   return (
