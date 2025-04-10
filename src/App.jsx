@@ -6,23 +6,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 // const user = { username: "Mailan", profile_img: "./img/avatar_02.svg" };
 
-function setUser(user) {
-  try {
-    localStorage.setItem("user", JSON.stringify(user));
-  } catch (e) {
-    return `Erro: ${e}`;
-  }
-}
-
-function getUser() {
-  const isUser = localStorage.getItem("user");
-  return JSON.parse(isUser);
-}
-
-function deleteSession() {
-  localStorage.clear();
-}
-
 function App() {
   return (
     <Router>
@@ -37,6 +20,5 @@ function App() {
     </Router>
   );
 }
-// {/* <Index /> */}
 
 export default App;
