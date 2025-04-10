@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.env": true,
+    "**/dist": true,
+    "android-chrome-192x192.png": true,
+    "android-chrome-512x512.png": true,
+    "apple-touch-icon.png": true,
+    "favicon-16x16.png": true,
+    "eslint.config.js": true,
+    "favicon-32x32.png": true,
+    ".gitignore": false,
+    "favicon.ico": true,
+    "package-lock.json": true,
+    "package.json": true,
+    "README.md": true,
+    "site.webmanifest": true,
+    "vite.config.js": true,
+  },
+  "search.exclude": {
+    "**/node_modules": true
+  }
+}
