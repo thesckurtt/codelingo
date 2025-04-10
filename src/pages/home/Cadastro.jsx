@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../../components/Header";
 import MainCadastroLandingPage from "../../components/home/MainCadastroLandingPage";
 import { useNavigate } from "react-router-dom";
