@@ -19,7 +19,7 @@ const modules = [
         title: "01 - Lorem Ipsum Dolor",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
         answers: [
-          { option: 1, text: "Lorem Ipsum sit amet" },
+          { option: 1, text: "teste Ipsum sit amet" },
           { option: 2, text: "Lorem Ipsum sit amet" },
           { option: 3, text: "Lorem Ipsum sit amet" },
           { option: 4, text: "Lorem Ipsum sit amet" },
