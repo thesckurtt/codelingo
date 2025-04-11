@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const FooterMainDashboardApp = ({statusFooter, btnLabel, id, handleClick}) => {
+const FooterMainDashboardApp = ({statusFooter, btnLabel, question_id, moduleId, handleClick, isIntro}) => {
  
 
   switch (statusFooter) {
     case "default":
       return (
         <div className="footer-main-dashboard-app border-top-sm w-100 p-3 d-flex align-items-center justify-content-end px-4 bg-">
-          <button className="btn-duo btn-dashboard" onClick={(e)=>{handleClick(e, id)}}>{btnLabel}</button>
+          <button className="btn-duo btn-dashboard" data-module-id={moduleId} onClick={(e)=>{handleClick(e, moduleId, question_id)}}>{btnLabel}</button>
         </div>
       );
     case "correct":
@@ -17,7 +17,7 @@ const FooterMainDashboardApp = ({statusFooter, btnLabel, id, handleClick}) => {
             <i class="fa-solid fs-5 p-2 rounded-5 bg-dashboard-color fa-check px-4 mx-2"></i>{" "}
             Resposta Correta
           </span>
-          <button className="btn-duo btn-success text-dark" onClick={(e)=>{handleClick(e, id)}}>{btnLabel}</button>
+          <button className="btn-duo btn-success text-dark" onClick={(e)=>{handleClick(e, moduleId, question_id)}}>{btnLabel}</button>
         </div>
       );
     case "incorrect":
