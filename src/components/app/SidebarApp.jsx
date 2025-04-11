@@ -1,13 +1,13 @@
 // import { useEffect, useState } from "react";
 import UlButtonSidebarApp from "./UlButtonSidebarApp";
-import usePersistentState from "../../utils/usePersistentState";
+import { useState } from "react";
 
-const SidebarApp = () => {
-  const [buttons, setButtons] = usePersistentState("buttons", [
-    { label: "Introdução", active: false },
-    { label: "Módulo 1", active: false },
-    { label: "Módulo 2", active: false },
-    { label: "Perfil", active: false },
+const SidebarApp = ({setModuleNow}) => {
+  const [buttons, setButtons] = useState([
+    { label: "Introdução", active: false, module_id: 1 },
+    { label: "Módulo 1", active: false, module_id: 2 },
+    { label: "Módulo 2", active: false, module_id: 3 },
+    { label: "Perfil", active: false, module_id: 4 },
   ]);
 
   function handleClick(e) {
@@ -16,6 +16,7 @@ const SidebarApp = () => {
         button.label.toLowerCase() == e.target.innerText.trim().toLowerCase()
       ) {
         button.active = true;
+        setModuleNow(button.module_id)
         return button;
       } else {
         button.active = false;
