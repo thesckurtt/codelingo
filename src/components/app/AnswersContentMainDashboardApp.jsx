@@ -1,15 +1,15 @@
-const AnswersContentMainDashboardApp = ({ questions, handleClick }) => {
-  const theQuestions = [
-    { option: 1, text: "Lorem Ipsum sit amet" },
-    { option: 2, text: "Lorem Ipsum sit amet" },
-    { option: 3, text: "Lorem Ipsum sit amet" },
-    { option: 4, text: "Lorem Ipsum sit amet" },
-  ];
+const AnswersContentMainDashboardApp = ({ answers, handleClick }) => {
+  // const theQuestions = [
+  //   { option: 1, text: "Lorem Ipsum sit amet" },
+  //   { option: 2, text: "Lorem Ipsum sit amet" },
+  //   { option: 3, text: "Lorem Ipsum sit amet" },
+  //   { option: 4, text: "Lorem Ipsum sit amet" },
+  // ];
 
   return (
     <div className="answers-content-main-dashboard-app mt-2">
       <ul className="w-100 text-white font-din-bold">
-        {theQuestions.map((question) => {
+        {answers.map((question) => {
           return (
             <li
               key={question.option}
