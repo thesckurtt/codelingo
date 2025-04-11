@@ -1,19 +1,130 @@
-import React from "react";
+import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import SidebarApp from "../../components/app/SidebarApp";
-import MainDashboardApp from "../../components/app/MainDashboardApp"
+import MainDashboardApp from "../../components/app/MainDashboardApp";
+import ModuleApp from "../../components/app/ModuleApp";
+
+const modules = [
+  {
+    id: 1,
+    name: "introducao",
+    visibility: true,
+    title: "Introdução ao JavaScript",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. Fusce a leo ut lectus fermentum rutrum eu ac eros. Sed accumsan pretium velit a vulputate.",
+    initial_view: true,
+    questions: [
+      {
+        id: 1,
+        visibility: true,
+        title: "01 - Lorem Ipsum Dolor",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
+        answers: [
+          { option: 1, text: "Lorem Ipsum sit amet" },
+          { option: 2, text: "Lorem Ipsum sit amet" },
+          { option: 3, text: "Lorem Ipsum sit amet" },
+          { option: 4, text: "Lorem Ipsum sit amet" },
+        ],
+        correct_answer: 2,
+      },
+      {
+        id: 2,
+        visibility: false,
+        title: "02 - Dolor Sit Amet",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
+        answers: [
+          { option: 1, text: "Ipsum sit Lorem amet" },
+          { option: 2, text: "Ipsum sit Lorem amet" },
+          { option: 3, text: "Ipsum sit Lorem amet" },
+          { option: 4, text: "Ipsum sit Lorem amet" },
+        ],
+        correct_answer: 4,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "modulo_01",
+    visibility: false,
+    title: "Módulo 1 - Lorem Ipsum",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. Fusce a leo ut lectus fermentum rutrum eu ac eros. Sed accumsan pretium velit a vulputate.",
+    initial_view: true,
+    questions: [
+      {
+        id: 1,
+        visibility: true,
+        title: "Lorem Ipsum Dolor",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
+        answers: [
+          { option: 1, text: "Lorem Ipsum sit amet" },
+          { option: 2, text: "Lorem Ipsum sit amet" },
+          { option: 3, text: "Lorem Ipsum sit amet" },
+          { option: 4, text: "Lorem Ipsum sit amet" },
+        ],
+        correct_answer: 2,
+      },
+      {
+        id: 2,
+        visibility: false,
+        title: "Dolor Sit Amet",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
+        answers: [
+          { option: 1, text: "Ipsum sit Lorem amet" },
+          { option: 2, text: "Ipsum sit Lorem amet" },
+          { option: 3, text: "Ipsum sit Lorem amet" },
+          { option: 4, text: "Ipsum sit Lorem amet" },
+        ],
+        correct_answer: 4,
+      },
+    ],
+  },
+];
 
 const IndexApp = () => {
+  const [moduleNow, setModuleNow] = useState(0); // Módulo atual
+  const [appModules, setAppModules] = useState(modules); // Módulos do App
+
+  // Função para iniciar perguntas, define o initial_view do módulo para false
+  function initModule(e) {
+    const moduleSelectedId = e.target.getAttribute("data-module-id");
+    const updated = modules
+      .filter((module) => module.id == moduleSelectedId)
+      .map((module) => ({ ...module, initial_view: false }));
+    console.log(updated);
+    setAppModules([...updated]);
+  }
+
   document
     .querySelector("body")
-    .setAttribute("class", "d-flex bg-dashboard-color body-dashboard min-vh-100");
+    .setAttribute(
+      "class",
+      "d-flex bg-dashboard-color body-dashboard min-vh-100"
+    );
 
-    document.getElementById('root').setAttribute('class', 'd-flex bg-dashboard-color body-dashboard w-100 min-vh-100')
+  document
+    .getElementById("root")
+    .setAttribute(
+      "class",
+      "d-flex bg-dashboard-color body-dashboard w-100 min-vh-100"
+    );
+
   const { user } = useAuth();
+
   return (
     <>
-      <SidebarApp/>
-      <MainDashboardApp />
+      <SidebarApp setModuleNow={setModuleNow} />
+      {appModules
+        .filter((module) => module.id == moduleNow)
+        .map((module) => {
+          return (
+            <ModuleApp
+              key={module.id}
+              module={module}
+              initModule={initModule}
+            />
+          );
+        })}
+
+      {/* <MainDashboardApp moduleNow={moduleNow} /> */}
     </>
   );
 };
