@@ -35,6 +35,7 @@ const ModuleApp = ({ module, initModule }) => {
                       title={question.title}
                       text={question.text}
                     />
+                    <AnswersContentMainDashboardApp answers={question.answers} />
                   </React.Fragment>
                 );
               })}
