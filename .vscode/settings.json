@@ -2,7 +2,7 @@
   "files.exclude": {
     "**/node_modules": true,
     "**/.env": true,
-    "**/dist": true,
+    "**/dist": false,
     "android-chrome-192x192.png": true,
     "android-chrome-512x512.png": true,
     "apple-touch-icon.png": true,
@@ -12,7 +12,7 @@
     ".gitignore": true,
     "favicon.ico": true,
     "package-lock.json": true,
-    "package.json": true,
+    "package.json": false,
     "README.md": true,
     "site.webmanifest": true,
     "vite.config.js": true,
