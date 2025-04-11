@@ -54,6 +54,9 @@
   --color-danger: #f03c3c;
   --color-dashboard-background: #131f24;
 
+  --color-footer-correct: #202F36;
+  --color-footer-text-correct: #78b533;
+
   /* Azul Escuros e Médios */
   --color-dark-blue: #131f24;
   --color-blue: #1899d6;
@@ -126,11 +129,20 @@ body {
 .bg-dashboard-progressbar {
   background-color: var(--color-bg-dashboard-progressbar);
 }
+.bg-footer-correct-app{
+  background-color: var(--color-footer-correct);
+}
 .bg-success{
   background-color: #58cc02 !important;
 }
+.text-dark{
+  color: var(--color-dark-blue) !important;
+}
 .text-gray{
   color: var(--color-text-gray);
+}
+.text-footer-correct{
+  color: var(--color-footer-text-correct);
 }
 /* Larguras */
 
