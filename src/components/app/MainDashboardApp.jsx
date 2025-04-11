@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import ProgressBarApp from "./ProgressBarApp";
 import TextContentMainDashboardApp from "./TextContentMainDashboardApp";
 import AnswersContentMainDashboardApp from "./AnswersContentMainDashboardApp";
@@ -79,91 +79,67 @@ const modules = [
   },
 ];
 
-const MainDashboardApp = () => {
-  const [appModules, setAppModules] = useState(modules);
-  const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
-  const [statusFooter, setStatusFooter] = useState("default"); // default - correct - incorrect
-  const [moduleNow, setModuleNow] = useState(modules.introducao);
+const MainDashboardApp = ({ moduleNow }) => {
+  const [appModules] = useState(modules); // Módulos do App
+  const [valueNowProgressBar, setValueNowProgressBar] = useState(0); // Barra de progresso das perguntas
+  const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
 
-  useEffect(() => {
-    setAppModules(appModules);
-    setValueNowProgressBar(valueNowProgressBar);
-    setStatusFooter(statusFooter);
-  }, [valueNowProgressBar, statusFooter, appModules]);
-
-  function answerHandleClick(e) {
-    setValueNowProgressBar(valueNowProgressBar + 20);
+  const answerHandleClick = (e) => {
+    setValueNowProgressBar((prev) => prev + 20);
     setStatusFooter("correct");
     console.log(e.target.getAttribute("data-question-option"));
-  }
+  };
 
-  function toggleInitialView(e, id) {
+  const toggleInitialView = (e, id) => {
     console.log(e, id);
-  }
+  };
 
   return (
     <main className="flex-grow-1 main-dashboard-app d-flex flex-column">
       {appModules.map((module) => {
-        {
-          /* console.log(module.visibility); */
-        }
-        if (module.visibility) {
-          return (
-            <React.Fragment key={module.name}>
-              <section className="content-main-dashboard-app d-flex flex-column align-items-center flex-grow-1 w-100 p-5">
-                {module.initial_view ? (
-                  ""
-                ) : (
-                  <ProgressBarApp valueNowProgressBar={valueNowProgressBar} />
-                )}
-                {/* initial_view == true ? mostra a introdução do módulo : mostra o conteudo da pergunta visivel */}
-                {module.initial_view ? (
-                  <TextContentMainDashboardApp
-                    title={module.title}
-                    text={module.text}
-                  />
-                ) : (
-                  module.questions.map((question) => {
-                    if (question.visibility) {
-                      return (
-                        <TextContentMainDashboardApp key={question.id}
-                          title={question.title}
-                          text={question.text}
-                        />
-                      );
-                    } else {
-                      return;
-                    }
-                  })
-                )}
+        if (!module.visibility) return null;
 
-                {module.initial_view ? (
-                  ""
-                ) : (
-                  <>
-                    <AnswersContentMainDashboardApp
-                      handleClick={answerHandleClick}
-                    />
-                  </>
-                )}
-              </section>
-              {/* Renderiza o primeiro componente se estiver na explicação do módulo */}
-              {module.initial_view ? (
-                <FooterMainDashboardApp
-                  statusFooter={statusFooter}
-                  btnLabel={"Iniciar"}
-                  handleClick={toggleInitialView}
-                  id={module.id}
+        const isIntro = module.initial_view;
+
+        return (
+          <React.Fragment key={module.name}>
+            <section className="content-main-dashboard-app d-flex flex-column align-items-center flex-grow-1 w-100 p-5">
+              {!isIntro && (
+                <ProgressBarApp valueNowProgressBar={valueNowProgressBar} />
+              )}
+
+              {isIntro ? (
+                <TextContentMainDashboardApp
+                  title={module.title}
+                  text={module.text}
                 />
               ) : (
-                <FooterMainDashboardApp
-                  statusFooter={statusFooter}
-                  btnLabel={"Verificar"}
+                module.questions.map((question) =>
+                  question.visibility ? (
+                    <TextContentMainDashboardApp
+                      key={question.id}
+                      title={question.title}
+                      text={question.text}
+                    />
+                  ) : null
+                )
+              )}
+
+              {!isIntro && (
+                <AnswersContentMainDashboardApp
+                  handleClick={answerHandleClick}
                 />
               )}
-            </React.Fragment>
-          );
-        }
+            </section>
+
+            <FooterMainDashboardApp
+              statusFooter={statusFooter}
+              btnLabel={isIntro ? "Iniciar" : "Verificar"}
+              handleClick={isIntro ? toggleInitialView : undefined}
+              id={isIntro ? module.id : undefined}
+            />
+          </React.Fragment>
+        );
       })}
     </main>
   );
