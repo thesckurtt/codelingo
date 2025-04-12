@@ -10,7 +10,10 @@ const ModuleApp = ({ module, initModule }) => {
 
   const isIntro = module.initial_view;
 
-  function answerHandleClick(e) {} // Função para verificar as perguntas
+  function answerHandleClick(e, correctAnswer, answerOption) {
+
+    (answerOption === correctAnswer) ? setStatusFooter('correct') : setStatusFooter('incorrect');
+  } // Função para verificar as perguntas
 
   return (
     <main className="flex-grow-1 main-dashboard-app d-flex flex-column">
@@ -35,7 +38,7 @@ const ModuleApp = ({ module, initModule }) => {
                       title={question.title}
                       text={question.text}
                     />
-                    <AnswersContentMainDashboardApp answers={question.answers} />
+                    <AnswersContentMainDashboardApp answers={question.answers} correctAnswer={question.correct_answer} handleClick={answerHandleClick}/>
                   </React.Fragment>
                 );
               })}
