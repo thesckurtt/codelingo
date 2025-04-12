@@ -400,6 +400,9 @@ body {
   max-width: 729px;
   width: 100%;
 }
+.li-answer.active{
+  background-color: var(--color-green-dark) !important;
+}
 
 .answers-content-main-dashboard-app > ul >  li:hover{
   background-color: var(--color-green-dark);
