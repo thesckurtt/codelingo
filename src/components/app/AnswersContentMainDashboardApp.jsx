@@ -1,5 +1,5 @@
 const AnswersContentMainDashboardApp = ({ answers, handleClick }) => {
-  // const theQuestions = [
+  // const theanswers = [
   //   { option: 1, text: "Lorem Ipsum sit amet" },
   //   { option: 2, text: "Lorem Ipsum sit amet" },
   //   { option: 3, text: "Lorem Ipsum sit amet" },
@@ -9,28 +9,25 @@ const AnswersContentMainDashboardApp = ({ answers, handleClick }) => {
   return (
     <div className="answers-content-main-dashboard-app mt-2">
       <ul className="w-100 text-white font-din-bold">
-        {answers.map((question) => {
+        {answers.map((answer) => {
           return (
             <li
-              key={question.option}
+              key={answer.option}
               style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer" }}
-              className="border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3"
+              className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${answer.active ? 'active' : '' }`}
               onClick={(e) => {
                 handleClick(e);
               }}
-              data-question-option={question.option}
+              data-answer-option={answer.option}
             >
               <span
-                data-question-option={question.option}
+                data-answer-option={answer.option}
                 className="border-sm p-1 rounded-3 inline-block justify-content-center align-items-center d-flex"
               >
-                {question.option}
+                {answer.option}
               </span>
-              <span
-                data-question-option={question.option}
-                className="inline-block"
-              >
-                {question.text}
+              <span data-answer-option={answer.option} className="inline-block">
+                {answer.text}
               </span>
             </li>
           );
