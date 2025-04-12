@@ -56,6 +56,7 @@
 
   --color-footer-correct: #202F36;
   --color-footer-text-correct: #78b533;
+  --color-footer-text-incorrect: #db4d4d;
 
   /* Azul Escuros e Médios */
   --color-dark-blue: #131f24;
@@ -143,6 +144,9 @@ body {
 }
 .text-footer-correct{
   color: var(--color-footer-text-correct);
+}
+.text-footer-incorrect{
+  color: var(--color-footer-text-incorrect);
 }
 /* Larguras */
 
