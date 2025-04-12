@@ -1,4 +1,8 @@
-const AnswersContentMainDashboardApp = ({ answers, handleClick }) => {
+const AnswersContentMainDashboardApp = ({
+  answers,
+  handleClick,
+  correctAnswer,
+}) => {
   // const theanswers = [
   //   { option: 1, text: "Lorem Ipsum sit amet" },
   //   { option: 2, text: "Lorem Ipsum sit amet" },
@@ -14,21 +18,17 @@ const AnswersContentMainDashboardApp = ({ answers, handleClick }) => {
             <li
               key={answer.option}
               style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer" }}
-              className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${answer.active ? 'active' : '' }`}
+              className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${
+                answer.active ? "active" : ""
+              }`}
               onClick={(e) => {
-                handleClick(e);
+                handleClick(e, correctAnswer, answer.option);
               }}
-              data-answer-option={answer.option}
             >
-              <span
-                data-answer-option={answer.option}
-                className="border-sm p-1 rounded-3 inline-block justify-content-center align-items-center d-flex"
-              >
+              <span className="border-sm p-1 rounded-3 inline-block justify-content-center align-items-center d-flex">
                 {answer.option}
               </span>
-              <span data-answer-option={answer.option} className="inline-block">
-                {answer.text}
-              </span>
+              <span className="inline-block">{answer.text}</span>
             </li>
           );
         })}
