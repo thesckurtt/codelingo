@@ -89,7 +89,7 @@ const IndexApp = () => {
     const updated = modules
       .filter((module) => module.id == moduleSelectedId)
       .map((module) => ({ ...module, initial_view: false }));
-    console.log(updated);
+    // console.log(updated);
     setAppModules([...updated]);
   }
 
