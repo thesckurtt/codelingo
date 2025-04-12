@@ -2,6 +2,7 @@ const AnswersContentMainDashboardApp = ({
   answers,
   handleClick,
   correctAnswer,
+  // questionsLenght
 }) => {
   // const theanswers = [
   //   { option: 1, text: "Lorem Ipsum sit amet" },
@@ -9,7 +10,7 @@ const AnswersContentMainDashboardApp = ({
   //   { option: 3, text: "Lorem Ipsum sit amet" },
   //   { option: 4, text: "Lorem Ipsum sit amet" },
   // ];
-
+// console.log('aqui', questionsLenght)
   return (
     <div className="answers-content-main-dashboard-app mt-2">
       <ul className="w-100 text-white font-din-bold">
