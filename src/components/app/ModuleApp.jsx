@@ -7,6 +7,7 @@ import FooterMainDashboardApp from "./FooterMainDashboardApp";
 const ModuleApp = ({ module, initModule }) => {
   const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
   const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
+  
 
   const isIntro = module.initial_view;
 
@@ -38,7 +39,7 @@ const ModuleApp = ({ module, initModule }) => {
             <ProgressBarApp valueNowProgressBar={valueNowProgressBar} />
             {module.questions
               .filter((q) => q.visibility == true)
-              .map((question) => {
+              .map((question, module) => {
                 return (
                   <React.Fragment key={question.id}>
                     <TextContentMainDashboardApp
@@ -46,6 +47,7 @@ const ModuleApp = ({ module, initModule }) => {
                       text={question.text}
                     />
                     <AnswersContentMainDashboardApp
+                      questionsLenght={module.questions}
                       answers={question.answers}
                       correctAnswer={question.correct_answer}
                       handleClick={answerHandleClick}
