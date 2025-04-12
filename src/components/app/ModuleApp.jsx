@@ -11,8 +11,15 @@ const ModuleApp = ({ module, initModule }) => {
   const isIntro = module.initial_view;
 
   function answerHandleClick(e, correctAnswer, answerOption) {
+    document.querySelectorAll(".li-answer.active").forEach((el) => {
+      el.classList.remove("active");
+    });
 
-    (answerOption === correctAnswer) ? setStatusFooter('correct') : setStatusFooter('incorrect');
+    e.currentTarget.classList.add("active");
+
+    answerOption === correctAnswer
+      ? setStatusFooter("correct")
+      : setStatusFooter("incorrect");
   } // Função para verificar as perguntas
 
   return (
@@ -38,7 +45,11 @@ const ModuleApp = ({ module, initModule }) => {
                       title={question.title}
                       text={question.text}
                     />
-                    <AnswersContentMainDashboardApp answers={question.answers} correctAnswer={question.correct_answer} handleClick={answerHandleClick}/>
+                    <AnswersContentMainDashboardApp
+                      answers={question.answers}
+                      correctAnswer={question.correct_answer}
+                      handleClick={answerHandleClick}
+                    />
                   </React.Fragment>
                 );
               })}
@@ -50,7 +61,7 @@ const ModuleApp = ({ module, initModule }) => {
         isIntro={isIntro}
         {...(isIntro ? { handleClick: initModule } : {})}
         statusFooter={statusFooter}
-        btnLabel={isIntro ? "Iniciar" : "Verificar"}
+        btnLabel={isIntro ? "Iniciar" : "Próxima"}
       />
     </main>
   );
