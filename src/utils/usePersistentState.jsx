@@ -6,7 +6,7 @@ export default function usePersistentState(key, initialValue) {
   });
   
   useEffect(() => {
-    console.log('aqui')
+    // console.log('aqui')
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
