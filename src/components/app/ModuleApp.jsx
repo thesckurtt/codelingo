@@ -45,16 +45,17 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
     const updated = moduleQuestions.map((question, index) => {
       if(question.visibility == true){
         question.visibility = false
-        console.log(question.title)
+        // console.log(question.title)
       }
       if(question.id == (currentQuestion + 2)){
         question.visibility = true
       }
       // console.log(question.title, `  --  ${index}`)
-      return question;
+      return question
     })
     // alert("avançar pergunta");
-    console.log(updated)
+    // console.log(updated)
+    setModuleQuestions([...updated])
     setStatusFooter('default')
   }
 
