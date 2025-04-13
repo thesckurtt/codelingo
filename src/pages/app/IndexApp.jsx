@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+// import { useAuth } from "../../contexts/AuthContext";
 import SidebarApp from "../../components/app/SidebarApp";
 import MainDashboardApp from "../../components/app/MainDashboardApp";
 import ModuleApp from "../../components/app/ModuleApp";
@@ -83,6 +83,7 @@ const IndexApp = () => {
   const [moduleNow, setModuleNow] = useState(0); // Módulo atual
   const [appModules, setAppModules] = useState(modules); // Módulos do App
 
+  // console.log(appModules)
   // Função para iniciar perguntas, define o initial_view do módulo para false
   function initModule(e) {
     const moduleSelectedId = e.target.getAttribute("data-module-id");
@@ -107,7 +108,7 @@ const IndexApp = () => {
       "d-flex bg-dashboard-color body-dashboard w-100 min-vh-100"
     );
 
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   return (
     <>
@@ -120,6 +121,8 @@ const IndexApp = () => {
               key={module.id}
               module={module}
               initModule={initModule}
+              setAppModules={setAppModules}
+              appModules={appModules}
             />
           );
         })}
