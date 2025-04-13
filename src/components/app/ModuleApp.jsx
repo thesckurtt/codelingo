@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBarApp from "./ProgressBarApp";
 import TextContentMainDashboardApp from "./TextContentMainDashboardApp";
 import AnswersContentMainDashboardApp from "./AnswersContentMainDashboardApp";
@@ -8,10 +8,16 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
   const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
   const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(0);
-  const [moduleQuestions, setModuleQuestions] = useState(module.questions)
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [moduleQuestions, setModuleQuestions] = useState(module.questions);
+  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [isModuleEnd, setIsModuleEnd] = useState(false);
   // console.log(module.questions);
 
+  // useEffect(()=>{
+  //   // setCurrentQuestion(currentQuestion)
+  //   console.log(currentQuestion)
+
+  // }, [currentQuestion])
   const isIntro = module.initial_view;
 
   // Função para verificar as perguntas
@@ -40,18 +46,29 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
   }
 
   // Função para avançar para a próxima pergunta
+  // console.log(moduleQuestions.length)
   function nextQuestion() {
     const updated = moduleQuestions.map((question) => {
-      if(question.visibility == true){
-        question.visibility = false
+      if (question.visibility == true) {
+        question.visibility = false;
       }
-      if(question.id == (currentQuestion + 2)){
-        question.visibility = true
+      if (question.id == currentQuestion + 1) {
+        question.visibility = true;
       }
-      return question
-    })
-    setModuleQuestions([...updated])
-    setStatusFooter('default')
+      return question;
+    });
+    // console.log(moduleQuestions.length) -- BUG
+    if (currentQuestion < moduleQuestions.length - 1) {
+      console.log(currentQuestion);
+      setCurrentQuestion(currentQuestion + 1);
+    }
+
+    if (currentQuestion == moduleQuestions.length - 1) {
+      setIsModuleEnd(true);
+      // alert("Fim do módulo");
+    }
+    setModuleQuestions([...updated]);
+    setStatusFooter("default");
   }
 
   return (
@@ -97,6 +114,7 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
         {...(isIntro
           ? { handleClick: initModule }
           : { handleClick: nextQuestion })}
+        isModuleEnd={isModuleEnd}
         statusFooter={statusFooter}
         btnLabel={isIntro ? "Iniciar" : "Próxima"}
       />
