@@ -41,20 +41,15 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
 
   // Função para avançar para a próxima pergunta
   function nextQuestion() {
-    // console.log(selectedAnswer)
-    const updated = moduleQuestions.map((question, index) => {
+    const updated = moduleQuestions.map((question) => {
       if(question.visibility == true){
         question.visibility = false
-        // console.log(question.title)
       }
       if(question.id == (currentQuestion + 2)){
         question.visibility = true
       }
-      // console.log(question.title, `  --  ${index}`)
       return question
     })
-    // alert("avançar pergunta");
-    // console.log(updated)
     setModuleQuestions([...updated])
     setStatusFooter('default')
   }
