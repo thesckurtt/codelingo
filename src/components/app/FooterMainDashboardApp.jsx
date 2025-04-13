@@ -7,20 +7,23 @@ const FooterMainDashboardApp = ({
   moduleId,
   handleClick,
   isIntro,
+  isModuleEnd,
 }) => {
   switch (statusFooter) {
     case "default":
       return (
         <div className="footer-main-dashboard-app border-top-sm w-100 p-3 d-flex align-items-center justify-content-end px-4 bg-">
-          <button
-            className="btn-duo btn-dashboard"
-            data-module-id={moduleId}
-            onClick={(e) => {
-              handleClick(e, moduleId, question_id);
-            }}
-          >
-            {btnLabel}
-          </button>
+          {!isModuleEnd && (
+            <button
+              className="btn-duo btn-dashboard"
+              data-module-id={moduleId}
+              onClick={(e) => {
+                handleClick(e, moduleId, question_id);
+              }}
+            >
+              {btnLabel}
+            </button>
+          )}
         </div>
       );
     case "correct":
@@ -30,14 +33,16 @@ const FooterMainDashboardApp = ({
             <i className="fa-solid fs-5 p-2 rounded-5 bg-dashboard-color fa-circle-check px-4 mx-2"></i>{" "}
             Resposta Correta
           </span>
-          <button
-            className="btn-duo btn-success text-dark"
-            onClick={(e) => {
-              handleClick(e, moduleId, question_id);
-            }}
-          >
-            {btnLabel}
-          </button>
+          {!isModuleEnd && (
+            <button
+              className="btn-duo btn-success text-dark"
+              onClick={(e) => {
+                handleClick(e, moduleId, question_id);
+              }}
+            >
+              {btnLabel}
+            </button>
+          )}
         </div>
       );
     case "incorrect":
@@ -48,14 +53,14 @@ const FooterMainDashboardApp = ({
             <i className="fa-solid fa-circle-xmark fs-5 p-2 rounded-5 bg-dashboard-color px-4 mx-2"></i>{" "}
             Resposta Incorreta
           </span>
-          <button
+          {!isModuleEnd && (<button
             className="btn-duo btn-success text-dark"
             onClick={(e) => {
               handleClick(e, moduleId, question_id);
             }}
           >
             {btnLabel}
-          </button>
+          </button>)}
         </div>
       );
     default:
