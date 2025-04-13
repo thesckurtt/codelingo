@@ -99,12 +99,16 @@ const IndexApp = () => {
   // console.log(appModules)
   // Função para iniciar perguntas, define o initial_view do módulo para false
   function initModule(e) {
-    const moduleSelectedId = e.target.getAttribute("data-module-id");
-    const updated = modules
-      .filter((module) => module.id == moduleSelectedId)
-      .map((module) => ({ ...module, initial_view: false }));
-    // console.log(updated);
-    setAppModules([...updated]);
+    const moduleSelectedId = parseInt(e.currentTarget.getAttribute("data-module-id"));
+    const updatedModules = appModules.map((module) => {
+      if (module.id === moduleSelectedId) {
+        return { ...module, initial_view: false };
+      }
+      return module;
+    });
+  
+    setAppModules(updatedModules);
+    setModuleNow(moduleSelectedId);
   }
 
   document
@@ -121,6 +125,7 @@ const IndexApp = () => {
       "d-flex bg-dashboard-color body-dashboard w-100 min-vh-100"
     );
 
+    // console.log(appModules)
   // const { user } = useAuth();
 
   return (
