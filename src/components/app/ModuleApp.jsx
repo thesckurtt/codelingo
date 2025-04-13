@@ -11,6 +11,17 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
   const [moduleQuestions, setModuleQuestions] = useState(module.questions);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isModuleEnd, setIsModuleEnd] = useState(false);
+
+  function resetModuleQuestions() {}
+
+  function resetAllStatesOfModule() {
+    setStatusFooter("default");
+    setValueNowProgressBar(0);
+    setSelectedAnswer(0);
+    setCurrentQuestion(1);
+    setIsModuleEnd(false);
+  }
+
   // console.log(module.questions);
 
   // useEffect(()=>{
