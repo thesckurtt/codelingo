@@ -39,6 +39,19 @@ const modules = [
         ],
         correct_answer: 4,
       },
+      {
+        id: 3,
+        visibility: false,
+        title: "03 - Dolor Sit Amet",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
+        answers: [
+          { option: 1, text: "Ipsum sit Lorem amet", active: false },
+          { option: 2, text: "Ipsum sit Lorem amet", active: false },
+          { option: 3, text: "Ipsum sit Lorem amet", active: false },
+          { option: 4, text: "Ipsum sit Lorem amet", active: false },
+        ],
+        correct_answer: 3,
+      },
     ],
   },
   {
