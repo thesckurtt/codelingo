@@ -87,11 +87,11 @@ const MainDashboardApp = ({ moduleNow }) => {
   const answerHandleClick = (e) => {
     setValueNowProgressBar((prev) => prev + 20);
     setStatusFooter("correct");
-    console.log(e.target.getAttribute("data-question-option"));
+    // console.log(e.target.getAttribute("data-question-option"));
   };
 
   const toggleInitialView = (e, id) => {
-    console.log(e, id);
+    // console.log(e, id);
   };
 
   return (
