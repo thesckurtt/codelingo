@@ -2,7 +2,9 @@ const AnswersContentMainDashboardApp = ({
   answers,
   handleClick,
   correctAnswer,
-  // questionsLenght
+  questionsLenght,
+  questionId,
+  setSelectedAnswer
 }) => {
   // const theanswers = [
   //   { option: 1, text: "Lorem Ipsum sit amet" },
@@ -10,7 +12,7 @@ const AnswersContentMainDashboardApp = ({
   //   { option: 3, text: "Lorem Ipsum sit amet" },
   //   { option: 4, text: "Lorem Ipsum sit amet" },
   // ];
-// console.log('aqui', questionsLenght)
+  // console.log('aqui', questionsLenght)
   return (
     <div className="answers-content-main-dashboard-app mt-2">
       <ul className="w-100 text-white font-din-bold">
@@ -23,7 +25,14 @@ const AnswersContentMainDashboardApp = ({
                 answer.active ? "active" : ""
               }`}
               onClick={(e) => {
-                handleClick(e, correctAnswer, answer.option);
+                handleClick(
+                  e,
+                  correctAnswer,
+                  answer.option,
+                  questionsLenght,
+                  questionId,
+                  setSelectedAnswer
+                );
               }}
             >
               <span className="border-sm p-1 rounded-3 inline-block justify-content-center align-items-center d-flex">
