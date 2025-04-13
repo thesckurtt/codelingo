@@ -6,11 +6,12 @@ const SidebarApp = ({setModuleNow}) => {
   const [buttons, setButtons] = useState([
     { label: "Introdução", active: false, module_id: 1 },
     { label: "Módulo 1", active: false, module_id: 2 },
-    { label: "Módulo 2", active: false, module_id: 3 },
-    { label: "Perfil", active: false, module_id: 4 },
+    // { label: "Módulo 2", active: false, module_id: 3 },
+    // { label: "Perfil", active: false, module_id: 4 },
   ]);
 
   function handleClick(e) {
+    // console.log(e.target.innerText)
     const updated = buttons.map((button) => {
       if (
         button.label.toLowerCase() == e.target.innerText.trim().toLowerCase()
