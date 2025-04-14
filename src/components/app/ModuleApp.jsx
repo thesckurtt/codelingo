@@ -11,6 +11,9 @@ const ModuleApp = ({
   appModules,
   moduleNow,
   setModuleNow,
+  buttons,
+  setButtons,
+  defaultModules
 }) => {
   const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
   const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
@@ -19,7 +22,9 @@ const ModuleApp = ({
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isModuleEnd, setIsModuleEnd] = useState(false);
 
-  function resetModuleQuestions() {}
+  function resetModuleQuestions() {
+
+  }
 
   function resetAllStatesOfModule() {
     setStatusFooter("default");
@@ -27,7 +32,15 @@ const ModuleApp = ({
     setSelectedAnswer(0);
     setCurrentQuestion(1);
     setIsModuleEnd(false);
+    setModuleQuestions(defaultModules[moduleNow - 1].questions)
+    setAppModules(defaultModules)
+    console.log(defaultModules[moduleNow - 1].questions)
+    console.log(appModules)
   }
+
+  useEffect(()=>{
+    resetAllStatesOfModule()
+  }, [buttons])
 
   // console.log(module.questions);
 
