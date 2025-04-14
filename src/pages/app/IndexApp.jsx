@@ -102,7 +102,7 @@ const IndexApp = () => {
     // { label: "Módulo 2", active: false, module_id: 3 },
     // { label: "Perfil", active: false, module_id: 4 },
   ]);
-  
+
   function changeModule(e) {
     // console.log(e.target.innerText)
     const updated = buttons.map((button) => {
@@ -165,6 +165,8 @@ const IndexApp = () => {
         .map((module) => {
           return (
             <ModuleApp
+              buttons={buttons}
+              setButtons={setButtons}
               moduleNow={moduleNow}
               setModuleNow={setModuleNow}
               key={module.id}
@@ -172,6 +174,7 @@ const IndexApp = () => {
               initModule={initModule}
               setAppModules={setAppModules}
               appModules={appModules}
+              defaultModules={modules}
             />
           );
         })}
