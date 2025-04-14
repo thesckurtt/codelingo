@@ -8,6 +8,9 @@ const FooterMainDashboardApp = ({
   handleClick,
   isIntro,
   isModuleEnd,
+  moduleNow,
+  setModuleNow,
+  appModulesLength,
 }) => {
   switch (statusFooter) {
     case "default":
@@ -22,6 +25,17 @@ const FooterMainDashboardApp = ({
               }}
             >
               {btnLabel}
+            </button>
+          )}
+          {isModuleEnd && appModulesLength < moduleNow && (
+            <button
+              className="btn-duo btn-dashboard"
+              data-module-id={moduleId}
+              onClick={() => {
+                setModuleNow(moduleNow + 1);
+              }}
+            >
+              Próximo Módulo
             </button>
           )}
         </div>
@@ -53,14 +67,16 @@ const FooterMainDashboardApp = ({
             <i className="fa-solid fa-circle-xmark fs-5 p-2 rounded-5 bg-dashboard-color px-4 mx-2"></i>{" "}
             Resposta Incorreta
           </span>
-          {!isModuleEnd && (<button
-            className="btn-duo btn-success text-dark"
-            onClick={(e) => {
-              handleClick(e, moduleId, question_id);
-            }}
-          >
-            {btnLabel}
-          </button>)}
+          {!isModuleEnd && (
+            <button
+              className="btn-duo btn-success text-dark"
+              onClick={(e) => {
+                handleClick(e, moduleId, question_id);
+              }}
+            >
+              {btnLabel}
+            </button>
+          )}
         </div>
       );
     default:
