@@ -4,7 +4,14 @@ import TextContentMainDashboardApp from "./TextContentMainDashboardApp";
 import AnswersContentMainDashboardApp from "./AnswersContentMainDashboardApp";
 import FooterMainDashboardApp from "./FooterMainDashboardApp";
 
-const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
+const ModuleApp = ({
+  module,
+  initModule,
+  setAppModules,
+  appModules,
+  moduleNow,
+  setModuleNow,
+}) => {
   const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
   const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(0);
@@ -120,6 +127,9 @@ const ModuleApp = ({ module, initModule, setAppModules, appModules }) => {
         )}
       </section>
       <FooterMainDashboardApp
+        appModulesLength={appModules.length}
+        moduleNow={moduleNow}
+        setModuleNow={setModuleNow}
         moduleId={module.id}
         isIntro={isIntro}
         {...(isIntro
