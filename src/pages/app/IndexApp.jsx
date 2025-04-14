@@ -81,10 +81,10 @@ const modules = [
         title: "Dolor Sit Amet",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas erat arcu, blandit a augue in, tincidunt euismod mi. ",
         answers: [
-          { option: 1, text: "Ipsum sit Lorem amet",active: false },
-          { option: 2, text: "Ipsum sit Lorem amet",active: false },
-          { option: 3, text: "Ipsum sit Lorem amet",active: false },
-          { option: 4, text: "Ipsum sit Lorem amet",active: false },
+          { option: 1, text: "Ipsum sit Lorem amet", active: false },
+          { option: 2, text: "Ipsum sit Lorem amet", active: false },
+          { option: 3, text: "Ipsum sit Lorem amet", active: false },
+          { option: 4, text: "Ipsum sit Lorem amet", active: false },
         ],
         correct_answer: 4,
       },
@@ -99,14 +99,16 @@ const IndexApp = () => {
   // console.log(appModules)
   // Função para iniciar perguntas, define o initial_view do módulo para false
   function initModule(e) {
-    const moduleSelectedId = parseInt(e.currentTarget.getAttribute("data-module-id"));
+    const moduleSelectedId = parseInt(
+      e.currentTarget.getAttribute("data-module-id")
+    );
     const updatedModules = appModules.map((module) => {
       if (module.id === moduleSelectedId) {
         return { ...module, initial_view: false };
       }
       return module;
     });
-  
+
     setAppModules(updatedModules);
     setModuleNow(moduleSelectedId);
   }
@@ -125,7 +127,7 @@ const IndexApp = () => {
       "d-flex bg-dashboard-color body-dashboard w-100 min-vh-100"
     );
 
-    // console.log(appModules)
+  // console.log(appModules)
   // const { user } = useAuth();
 
   return (
@@ -136,6 +138,8 @@ const IndexApp = () => {
         .map((module) => {
           return (
             <ModuleApp
+              moduleNow={moduleNow}
+              setModuleNow={setModuleNow}
               key={module.id}
               module={module}
               initModule={initModule}
