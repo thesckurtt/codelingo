@@ -96,6 +96,30 @@ const IndexApp = () => {
   const [moduleNow, setModuleNow] = useState(0); // Módulo atual
   const [appModules, setAppModules] = useState(modules); // Módulos do App
 
+  const [buttons, setButtons] = useState([
+    { label: "Introdução", active: false, module_id: 1 },
+    { label: "Módulo 1", active: false, module_id: 2 },
+    // { label: "Módulo 2", active: false, module_id: 3 },
+    // { label: "Perfil", active: false, module_id: 4 },
+  ]);
+  
+  function changeModule(e) {
+    // console.log(e.target.innerText)
+    const updated = buttons.map((button) => {
+      if (
+        button.label.toLowerCase() == e.target.innerText.trim().toLowerCase()
+      ) {
+        button.active = true;
+        setModuleNow(button.module_id)
+        return button;
+      } else {
+        button.active = false;
+        return button;
+      }
+    });
+    setButtons([...updated]);
+  }
+
   // console.log(appModules)
   // Função para iniciar perguntas, define o initial_view do módulo para false
   function initModule(e) {
@@ -132,7 +156,10 @@ const IndexApp = () => {
 
   return (
     <>
-      <SidebarApp setModuleNow={setModuleNow} />
+      <SidebarApp 
+      handleClick={changeModule}
+      buttons={buttons}
+      setModuleNow={setModuleNow} />
       {appModules
         .filter((module) => module.id == moduleNow)
         .map((module) => {
