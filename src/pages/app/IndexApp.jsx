@@ -259,7 +259,7 @@ const modules = [
     id: 2,
     name: "tempos_verbais",
     visibility: true,
-    title: "Módulo - Tempos Verbais",
+    title: "Módulo 1 - Tempos Verbais",
     text: `Os tempos verbais indicam quando uma ação acontece e são essenciais para entender e construir frases em inglês. No texto sobre JavaScript, encontramos principalmente o Simple Present, o Present Continuous, o verbo to be no presente e imperativos. O Simple Present é usado para falar de fatos e rotinas, como em “JavaScript runs in the browser.” Já o Present Continuous descreve ações em andamento, como “JavaScript is becoming more powerful.”
 
 O verbo to be aparece no presente como “am”, “is” ou “are”, sendo usado tanto sozinho quanto como parte de outras estruturas verbais. Os imperativos, por sua vez, são usados para dar instruções ou conselhos, como em “Learn JavaScript!”. Entender esses tempos ajuda a interpretar melhor os textos e a se comunicar com clareza em inglês.`,
@@ -387,7 +387,7 @@ O verbo to be aparece no presente como “am”, “is” ou “are”, sendo us
     id: 3,
     name: "compreensao_textual",
     visibility: true,
-    title: "Módulo - Compreensão Textual",
+    title: "Módulo 2 - Compreensão Textual",
     text: `Compreensão textual é a habilidade de entender, interpretar e extrair informações de um texto. Ela envolve estratégias como:
 
     Skimming, que é a leitura rápida para captar a ideia geral do texto;
