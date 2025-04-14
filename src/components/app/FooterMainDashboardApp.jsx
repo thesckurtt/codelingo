@@ -27,7 +27,7 @@ const FooterMainDashboardApp = ({
               {btnLabel}
             </button>
           )}
-          {isModuleEnd && appModulesLength < moduleNow && (
+          {isModuleEnd && moduleNow < appModulesLength  && (
             <button
               className="btn-duo btn-dashboard"
               data-module-id={moduleId}
@@ -57,6 +57,17 @@ const FooterMainDashboardApp = ({
               {btnLabel}
             </button>
           )}
+          {isModuleEnd && moduleNow < appModulesLength  && (
+            <button
+              className="btn-duo btn-success text-dark"
+              data-module-id={moduleId}
+              onClick={() => {
+                setModuleNow(moduleNow + 1);
+              }}
+            >
+              Próximo Módulo
+            </button>
+          )}
         </div>
       );
     case "incorrect":
@@ -75,6 +86,17 @@ const FooterMainDashboardApp = ({
               }}
             >
               {btnLabel}
+            </button>
+          )}
+          {isModuleEnd && moduleNow < appModulesLength  && (
+            <button
+              className="btn-duo btn-success text-dark"
+              data-module-id={moduleId}
+              onClick={() => {
+                setModuleNow(moduleNow + 1);
+              }}
+            >
+              Próximo Módulo
             </button>
           )}
         </div>
