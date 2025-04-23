@@ -4,6 +4,7 @@ import SidebarApp from "../../components/app/SidebarApp";
 import MainDashboardApp from "../../components/app/MainDashboardApp";
 import ModuleApp from "../../components/app/ModuleApp";
 import { GlobalAppProvider } from "../../contexts/GlobalContextApp";
+import Ranking from "../../components/app/Ranking";
 const modules = [
   // {
   //   id: 1,
@@ -522,13 +523,19 @@ Essas estratégias são muito úteis para quem estuda em outra língua, pois aju
 const IndexApp = () => {
   const [moduleNow, setModuleNow] = useState(0); // Módulo atual
   const [appModules, setAppModules] = useState(modules); // Módulos do App
+  const [rankingVisibility, setRankingVisibility] = useState(false)
 
   const [buttons, setButtons] = useState([
     { label: "Introdução", active: false, module_id: 1 },
     { label: "Módulo 1", active: false, module_id: 2 },
     { label: "Módulo 2", active: false, module_id: 3 },
+    // { label: "Ranking", active: false, module_id: 4 },
     // { label: "Perfil", active: false, module_id: 4 },
   ]);
+
+  function handleRankingVisibility(){
+    setRankingVisibility((e) => !e);
+  }
 
   function changeModule(e) {
     // console.log(e.target.innerText)
@@ -583,13 +590,15 @@ const IndexApp = () => {
 
   return (
     <>
-      <SidebarApp
-        handleClick={changeModule}
-        buttons={buttons}
-        setModuleNow={setModuleNow}
-      />
       <GlobalAppProvider>
-        {appModules
+        <SidebarApp
+        rankingVisibility={rankingVisibility}
+          setRankingVisibility={handleRankingVisibility}
+          handleClick={changeModule}
+          buttons={buttons}
+          setModuleNow={setModuleNow}
+        />
+        {!rankingVisibility && appModules
           .filter((module) => module.id == moduleNow)
           .map((module) => {
             return (
@@ -607,9 +616,10 @@ const IndexApp = () => {
               />
             );
           })}
-      </GlobalAppProvider>
+          {rankingVisibility && <Ranking />}
 
-      {/* <MainDashboardApp moduleNow={moduleNow} /> */}
+        {/* <MainDashboardApp moduleNow={moduleNow} /> */}
+      </GlobalAppProvider>
     </>
   );
 };
