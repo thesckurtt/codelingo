@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const GlobalAppContext = createContext();
 
@@ -25,3 +25,7 @@ export const GlobalAppProvider = ({ children }) => {
     </GlobalAppContext.Provider>
   )
 }
+
+export const useGlobalApp = () => useContext(GlobalAppContext)
+
+// export const useAuth = () => useContext(AuthContext);
