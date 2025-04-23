@@ -1,3 +1,5 @@
+import {  useState } from "react";
+
 const AnswersContentMainDashboardApp = ({
   answers,
   handleClick,
@@ -6,6 +8,7 @@ const AnswersContentMainDashboardApp = ({
   questionId,
   setSelectedAnswer
 }) => {
+  const [selected, setSelected] = useState(null)
   // const theanswers = [
   //   { option: 1, text: "Lorem Ipsum sit amet" },
   //   { option: 2, text: "Lorem Ipsum sit amet" },
@@ -20,10 +23,9 @@ const AnswersContentMainDashboardApp = ({
           return (
             <li
               key={answer.option}
-              style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer" }}
-              className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${
-                answer.active ? "active" : ""
-              }`}
+              style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer", pointerEvents: selected != null ? 'none' : 'auto' }}
+              className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${answer.active ? "active" : ""
+                }`}
               onClick={(e) => {
                 handleClick(
                   e,
@@ -33,6 +35,7 @@ const AnswersContentMainDashboardApp = ({
                   questionId,
                   setSelectedAnswer
                 );
+                setSelected(answer.option)
               }}
             >
               <span className="border-sm p-1 rounded-3 inline-block justify-content-center align-items-center d-flex">
