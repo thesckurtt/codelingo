@@ -2,7 +2,7 @@
 import UlButtonSidebarApp from "./UlButtonSidebarApp";
 import { useState } from "react";
 
-const SidebarApp = ({ setModuleNow, handleClick, buttons }) => {
+const SidebarApp = ({ setModuleNow, handleClick, buttons, setRankingVisibility, rankingVisibility }) => {
   const btns = buttons.map((bt) => ({ ...bt, action: handleClick }));
 
   return (
@@ -23,14 +23,21 @@ const SidebarApp = ({ setModuleNow, handleClick, buttons }) => {
               <UlButtonSidebarApp
                 label={button.label}
                 onClick={button.action}
-                active={button.active}
-                className={`btn-duo btn-dashboard mt-2 ${
-                  button.active ? "active" : ""
-                }`}
+                className={`btn-duo btn-dashboard mt-2 ${button.active ? "active" : ""
+                  }`}
               />
             </li>
           );
         })}
+        <li>
+          <UlButtonSidebarApp
+            label={'Ranking'}
+            onClick={setRankingVisibility}
+            active={false}
+            className={`btn-duo btn-dashboard mt-2 ${rankingVisibility ? "active" : ""
+              }`}
+          />
+        </li>
       </ul>
     </div>
   );
