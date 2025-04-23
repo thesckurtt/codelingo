@@ -23,7 +23,7 @@ const AnswersContentMainDashboardApp = ({
           return (
             <li
               key={answer.option}
-              style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer", pointerEvents: selected != null ? 'none' : 'auto' }}
+              style={{ gridTemplateColumns: "40px 1fr", cursor: "pointer", pointerEvents: selected != null ? 'none' : 'auto',  opacity: selected !== null && selected !== answer.option ? 0.5 : 1,}}
               className={`li-answer border-sm rounded-3 justify-content-center align-items-center p-2 d-grid gap-3 mb-3 ${answer.active ? "active" : ""
                 }`}
               onClick={(e) => {
