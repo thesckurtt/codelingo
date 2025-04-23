@@ -23,6 +23,7 @@ const ModuleApp = ({
   const [moduleQuestions, setModuleQuestions] = useState(module.questions);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isModuleEnd, setIsModuleEnd] = useState(false);
+  const [blockNextQuestion, setBlockNextQuestion] = useState(true)
   const { correctQuestion, handleCorrectAnswer, wrongQuestion, verifyTotalQuestions, handleWrongAnswer } = useContext(GlobalAppContext)
   const mySectionRef = useRef(null);
 
@@ -72,6 +73,8 @@ const ModuleApp = ({
     setValueNowProgressBar((questionId / questionsLenght) * 100);
 
     setSelectedAnswer(answerOption);
+
+    setBlockNextQuestion(false)
 
     if (answerOption === correctAnswer) {
       setStatusFooter("correct");
@@ -148,6 +151,8 @@ const ModuleApp = ({
         )}
       </section>
       <FooterMainDashboardApp
+        setBlockNextQuestion={setBlockNextQuestion}
+        blockNextQuestion={isIntro ? false : blockNextQuestion}
         appModulesLength={appModules.length}
         moduleNow={moduleNow}
         setModuleNow={setModuleNow}
