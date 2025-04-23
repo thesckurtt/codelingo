@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const FooterMainDashboardApp = ({
   statusFooter,
+  blockNextQuestion,
+  setBlockNextQuestion,
   btnLabel,
   question_id,
   moduleId,
@@ -12,6 +14,7 @@ const FooterMainDashboardApp = ({
   setModuleNow,
   appModulesLength,
 }) => {
+  setBlockNextQuestion(true)
   switch (statusFooter) {
     case "default":
       return (
@@ -23,6 +26,7 @@ const FooterMainDashboardApp = ({
               onClick={(e) => {
                 handleClick(e, moduleId, question_id);
               }}
+              style={{pointerEvents: blockNextQuestion === true ? 'none' : 'auto', opacity: blockNextQuestion === true ? '0.5' : '1' }}
             >
               {btnLabel}
             </button>
