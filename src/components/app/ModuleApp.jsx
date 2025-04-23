@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import ProgressBarApp from "./ProgressBarApp";
 import TextContentMainDashboardApp from "./TextContentMainDashboardApp";
 import AnswersContentMainDashboardApp from "./AnswersContentMainDashboardApp";
 import FooterMainDashboardApp from "./FooterMainDashboardApp";
+import { GlobalAppContext, GlobalAppProvider } from "../../contexts/GlobalContextApp";
+import { confetti } from "@tsparticles/confetti";
 
 const ModuleApp = ({
   module,
@@ -21,7 +23,8 @@ const ModuleApp = ({
   const [moduleQuestions, setModuleQuestions] = useState(module.questions);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isModuleEnd, setIsModuleEnd] = useState(false);
-  
+  const { correctQuestion, handleCorrectAnswer, wrongQuestion, verifyTotalQuestions, handleWrongAnswer } = useContext(GlobalAppContext)
+  const mySectionRef = useRef(null);
 
   function resetModuleQuestions() {
 
@@ -39,7 +42,7 @@ const ModuleApp = ({
     console.log(appModules)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     resetAllStatesOfModule()
   }, [buttons])
 
@@ -72,9 +75,12 @@ const ModuleApp = ({
 
     if (answerOption === correctAnswer) {
       setStatusFooter("correct");
-      
+      handleCorrectAnswer()
+      verifyTotalQuestions()
     } else {
       setStatusFooter("incorrect");
+      handleWrongAnswer()
+      verifyTotalQuestions()
     }
   }
 
@@ -92,7 +98,7 @@ const ModuleApp = ({
     });
     // console.log(moduleQuestions.length) -- BUG
     if (currentQuestion < moduleQuestions.length - 1) {
-      console.log(currentQuestion);
+      // console.log(currentQuestion);
       setCurrentQuestion(currentQuestion + 1);
     }
 
@@ -106,7 +112,7 @@ const ModuleApp = ({
 
   return (
     <main className="flex-grow-1 main-dashboard-app d-flex flex-column">
-      <section className="content-main-dashboard-app d-flex flex-column align-items-center flex-grow-1 w-100 p-5">
+      <section ref={mySectionRef} className="content-main-dashboard-app d-flex flex-column align-items-center flex-grow-1 w-100 p-5">
         {isIntro && (
           <>
             <TextContentMainDashboardApp
