@@ -15,7 +15,7 @@ const ModuleApp = ({
   setModuleNow,
   buttons,
   setButtons,
-  defaultModules
+  defaultModules,
 }) => {
   const [statusFooter, setStatusFooter] = useState("default"); // Footer do Main App [default - correct - incorrect]
   const [valueNowProgressBar, setValueNowProgressBar] = useState(0);
