@@ -8,10 +8,12 @@ export const GlobalAppProvider = ({ children }) => {
 
   function handleCorrectAnswer() {
     setCorrectQuestion((correctQuestion) => correctQuestion + 1)
+    console.log(correctQuestion)
   }
 
   function handleWrongAnswer() {
     setWrongQuestion((wrongQuestion) => wrongQuestion + 1)
+    console.log(wrongQuestion)
   }
 
   return (
