@@ -439,7 +439,7 @@ const modules = [
     "name": "introducao",
     "visibility": true,
     "title": "Introdução ao PHP",
-    "text": "PHP is a server-side scripting language widely used for web development. It was originally created in 1994 and has become a powerful tool for building dynamic web applications. PHP was very simple in its early stages, but it has evolved significantly. Today, many developers are using PHP with modern frameworks like Laravel. This language has been used to create large-scale websites and continues to be relevant in the development community.\n\nTempos verbais estudados neste módulo:\n- To be (Simple Past)\n- Past Continuous\n- Simple Past\n- Present Perfect",
+    "text": "PHP is a server-side scripting language widely used for web development. It was originally created in 1994 and has become a powerful tool for building dynamic web applications. PHP was very simple in its early stages, but it has evolved significantly. Today, many developers are using PHP with modern frameworks like Laravel. This language has been used to create large-scale websites and continues to be relevant in the development community.",
     "initial_view": true,
     "questions": [
       {
@@ -651,9 +651,9 @@ const modules = [
     "id": 2,
     "name": "forma_afirmativa",
     "visibility": false,
-    "title": "Módulo 2 - Forma Afirmativa",
+    "title": "Módulo 1 - Forma Afirmativa",
     "text": "A forma afirmativa é usada para declarar fatos ou ações positivas. Em PHP, usamos frases afirmativas para descrever o comportamento do código, como: 'PHP handles server-side logic.' ou 'The function returns the expected value.'",
-    "initial_view": false,
+    "initial_view": true,
     "questions": [
       {
         "id": 1,
@@ -739,9 +739,9 @@ const modules = [
     "id": 3,
     "name": "forma_negativa",
     "visibility": false,
-    "title": "Módulo 3 - Forma Negativa",
+    "title": "Módulo 2 - Forma Negativa",
     "text": "A forma negativa expressa a negação de uma ação. Em PHP, usamos essa forma para indicar que algo não acontece, como: 'PHP does not support multithreading natively.' ou 'The function doesn’t return a value.'",
-    "initial_view": false,
+    "initial_view": true,
     "questions": [
       {
         "id": 1,
@@ -827,9 +827,9 @@ const modules = [
     "id": 4,
     "name": "forma_interrogativa",
     "visibility": false,
-    "title": "Módulo 4 - Forma Interrogativa",
+    "title": "Módulo 3 - Forma Interrogativa",
     "text": "A forma interrogativa é usada para fazer perguntas. Em PHP, usamos essa forma para investigar comportamentos ou características, como: 'Does PHP support object-oriented programming?' ou 'Is this function returning null?'",
-    "initial_view": false,
+    "initial_view": true,
     "questions": [
       {
         "id": 1,
