@@ -21,6 +21,7 @@ const ModuleApp = ({
   const [moduleQuestions, setModuleQuestions] = useState(module.questions);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [isModuleEnd, setIsModuleEnd] = useState(false);
+  
 
   function resetModuleQuestions() {
 
@@ -71,6 +72,7 @@ const ModuleApp = ({
 
     if (answerOption === correctAnswer) {
       setStatusFooter("correct");
+      
     } else {
       setStatusFooter("incorrect");
     }
