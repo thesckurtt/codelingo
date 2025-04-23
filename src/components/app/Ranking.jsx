@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useAuth } from '../../contexts/AuthContext'
+import { useGlobalApp } from '../../contexts/GlobalContextApp'
 
 const Ranking = () => {
-  
+  const { user } = useAuth()
+  const { correctQuestion, wrongQuestion } = useGlobalApp()
+  console.log(user)
   return (
     <main className="flex-grow-1 main-dashboard-app d-flex flex-column">
       <section className="content-main-dashboard-app d-flex flex-column align-items-center flex-grow-1 w-100 p-5" >
         <section className="ranking w-100">
           <div className="rankinng-profile d-flex justify-content-center align-items-center flex-column">
             <div className="container-rankinng-profile-img">
-              <img src="./img/avatar_02.svg" alt="" />
+              <img src={user.profile_img} alt="" />
             </div>
-            <span className="fs-4 font-din-bold text-light ">Jéssica Fler</span>
+            <span className="fs-4 font-din-bold text-light ">{user.username}</span>
             <div className="personal-scoreboard d-flex m-3">
-              <div className="border-sm p-2 rounded-4"><span className="fs-5 font-din-bold text-light ">10 ACERTOS</span></div>
-              <div className="border-sm p-2 rounded-4"><span className="fs-5 font-din-bold text-light ">10 ERROS</span></div>
+              <div className="border-sm p-2 rounded-4"><span className="fs-5 font-din-bold text-light ">{correctQuestion} ACERTOS</span></div>
+              <div className="border-sm p-2 rounded-4"><span className="fs-5 font-din-bold text-light ">{wrongQuestion} ERROS</span></div>
             </div>
           </div>
           <div class="hr-ranking-dashboard m-4"></div>
