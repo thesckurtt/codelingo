@@ -3,7 +3,7 @@ import { useState } from "react";
 import SidebarApp from "../../components/app/SidebarApp";
 import MainDashboardApp from "../../components/app/MainDashboardApp";
 import ModuleApp from "../../components/app/ModuleApp";
-
+import { GlobalAppProvider } from "../../contexts/GlobalContextApp";
 const modules = [
   // {
   //   id: 1,
@@ -588,24 +588,26 @@ const IndexApp = () => {
         buttons={buttons}
         setModuleNow={setModuleNow}
       />
-      {appModules
-        .filter((module) => module.id == moduleNow)
-        .map((module) => {
-          return (
-            <ModuleApp
-              buttons={buttons}
-              setButtons={setButtons}
-              moduleNow={moduleNow}
-              setModuleNow={setModuleNow}
-              key={module.id}
-              module={module}
-              initModule={initModule}
-              setAppModules={setAppModules}
-              appModules={appModules}
-              defaultModules={modules}
-            />
-          );
-        })}
+      <GlobalAppProvider>
+        {appModules
+          .filter((module) => module.id == moduleNow)
+          .map((module) => {
+            return (
+              <ModuleApp
+                buttons={buttons}
+                setButtons={setButtons}
+                moduleNow={moduleNow}
+                setModuleNow={setModuleNow}
+                key={module.id}
+                module={module}
+                initModule={initModule}
+                setAppModules={setAppModules}
+                appModules={appModules}
+                defaultModules={modules}
+              />
+            );
+          })}
+      </GlobalAppProvider>
 
       {/* <MainDashboardApp moduleNow={moduleNow} /> */}
     </>
