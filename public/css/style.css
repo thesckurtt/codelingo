@@ -411,3 +411,30 @@ body {
 .answers-content-main-dashboard-app > ul >  li:hover{
   background-color: var(--color-green-dark);
 }
+
+/* Ranking */
+.personal-scoreboard{
+  gap: 20px;
+}
+.hr-ranking-dashboard{
+  border-bottom: 2px solid var(--color-border-01);
+}
+.container-li-rankinng-profile-img{
+  max-width: 54px;
+}
+.container-li-rankinng-profile-img> img{
+  position: relative;
+  width: 100%;
+}
+.ranking-profiles > li{
+  max-width: 450px;
+  width: 100%;
+}
+.li-ranking-info {
+  position: relative;
+  left: 20px;
+}
+.ranking-profiles{
+  max-height: 500px;
+  overflow-y: scroll;
+}
