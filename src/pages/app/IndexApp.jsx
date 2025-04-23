@@ -534,6 +534,8 @@ const IndexApp = () => {
   ]);
 
   function handleRankingVisibility(){
+    const updated = buttons.map((button) => ({...button, active: false}));
+    setButtons(updated);
     setRankingVisibility((e) => !e);
   }
 
@@ -551,6 +553,7 @@ const IndexApp = () => {
         return button;
       }
     });
+    setRankingVisibility(false)
     setButtons([...updated]);
   }
 
